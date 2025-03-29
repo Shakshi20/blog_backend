@@ -13,8 +13,11 @@ dbConnect();
 
 const app = express();
 const PORT = process.env.PORT || 4000;
-const allowedOrigins = ["http://localhost:5173", process.env.FRONTEND_URL];
-
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://blog-hackathon.netlify.app",
+  process.env.FRONTEND_URL,
+];
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -36,8 +39,6 @@ app.use(
         callback(new Error("Not allowed by CORS"));
       }
     },
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
   })
 );
